@@ -4,20 +4,29 @@ import{FormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
+import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './shared/user.service';
+import { HomeComponent } from './home/home.component';
+import { UserComponent } from './user/user.component';
+import { SignInComponent } from './user/sign-in/sign-in.component';
+import { RouterModule } from '@angular/router';
+import { appRoutes } from './route';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SignUpComponent
+    SignUpComponent,
+    HomeComponent,
+    UserComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
