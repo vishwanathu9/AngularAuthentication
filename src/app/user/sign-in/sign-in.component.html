@@ -1,4 +1,8 @@
-<form #loginForm="ngForm" class="col s12 white">
+<div *ngIf="isLoginError" class="red-text center  error-message">
+<i class="material-icons">error</i>   Incorrec UserName or Password 
+</div>
+
+<form #loginForm="ngForm" class="col s12 white" (ngSubmit)="OnSumit(UserName.value,Password.value)">
     <div class="row">
       <div class="input-field col s12">
         <i class="material-icons prefix">account_circle</i>
