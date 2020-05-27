@@ -18,7 +18,9 @@ export class UserService {
       FirstName: user.FirstName,
       LastName: user.LastName
     }
-    return this.http.post(this.rootUrl + '/api/Account/Register', body);
+
+    var reqHeader = new HttpHeaders({ 'No-Auth': 'True' });
+    return this.http.post(this.rootUrl + '/api/Account/Register', body, { headers: reqHeader });
   }
 
 
@@ -30,7 +32,6 @@ export class UserService {
   }
 
   getUserClaims() {
-    return this.http.get(this.rootUrl + '/api/Account/GetUserClaims',
-      { headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem("UserToken") }) });
+    return this.http.get(this.rootUrl + '/api/Account/GetUserClaims');
   }
 }
