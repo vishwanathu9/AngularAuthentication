@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
+import { UserService } from '../shared/user.service';
+
 
 @Component({
   selector: 'app-home',
@@ -9,14 +11,19 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor( private router: Router) { }
+  userClaims: any;
+  constructor(private router: Router, private userService: UserService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.userService.getUserClaims().subscribe((data: any) => {
+      console.log(data);
+      this.userClaims = data;
+    })
   }
 
-  LogOut():void{
+  LogOut(): void {
     localStorage.removeItem("UserToken");
     this.router.navigateByUrl('/login');
-   
+
   }
 }
